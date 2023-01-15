@@ -1,5 +1,5 @@
 import { ProductStyle } from "../styles/ProductStyle";
-import Link from "next/link";
+import Link from "next/link"; //used for redirecting
 export default function Product({Product})
 {
     const {Title,price,image,slug}=Product.attributes;

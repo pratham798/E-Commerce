@@ -9,6 +9,8 @@ export default function ProductDetails() {
     //Use State
     const {qty,increaseQty,decreaseQty,onAdd}= useStateContext();
     //Fetch slug
+    //use router is a hook which creates an object with certain members
+    //here we are taking slug from it which creates a string with the same name as the url entres after../ and we are passing it to the query
     const {query}= useRouter();
 
     //Fetch GraphQL data
@@ -22,7 +24,6 @@ export default function ProductDetails() {
     if(fetching) return <p>Loading..</p>;
     if(error) return <p>Oops!...{error.message}</p>;
 
-    console.log(data);
     const { Title , Description , image} = data.products.data[0].attributes;
 
     return(

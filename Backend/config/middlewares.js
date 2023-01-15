@@ -1,3 +1,4 @@
+//this module is a fix for previewing images in cloudinary taken as it is from documentation
 module.exports = [
   'strapi::errors',
   'strapi::security',

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CartWrapper = styled.div`
      position: fixed;
+     top:0;
      right: 0;
      left: 0;
      height: 100vh;
@@ -14,7 +15,7 @@ export const CartWrapper = styled.div`
 `;
 
 export const CartStyle= styled.div`
-      width: 30%;
+      width: 40%;
       background: #f1f1f1;
       padding: 2rem 5rem;
       overflow-y: scroll;

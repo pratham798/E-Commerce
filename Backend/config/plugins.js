@@ -1,3 +1,4 @@
+//this module allows us to use cloudinary with strapi
 module.exports = ({ env }) => ({
     // ...
     upload: {

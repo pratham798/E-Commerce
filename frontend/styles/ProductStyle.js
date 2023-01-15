@@ -6,11 +6,11 @@ position: relative;
 display: flex;
 flex-direction: column;
 padding: 1.5 rem;
+cursor: pointer;
 img {
     width: 100%;
-    cursor: pointer;
+    /* object-fit: cover; */
     /* padding: 1.2rem 1.2rem; */
-
 }
 h2 {
     padding: 0.5rem 0rem;
