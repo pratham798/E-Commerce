@@ -27,14 +27,26 @@ export const StateContext =({children})=>{
        //Check if The product is already in the cart
        const exist =cartItems.find(item=>item.slug === product.slug);
        if(exist){
-         setCartItems(cartItems.map((item)=>item.slug===product.slug ?{...exist,quantity: exist.quantity+quantity}:item))
+         setCartItems(cartItems.map((item)=>item.slug===product.slug ?{...exist,quantity: exist.quantity+quantity}:item));
        }
        else{
             setCartItems([...cartItems,{...product, quantity: quantity }])
        }
     }
+
+    //Remove Products
+    const onRemove=(product)=>{
+        const exist=cartItems.find((item)=>item.slug==product.slug);
+        if(exist.quantity===1){
+            setCartItems(cartItems.filter(item=>item.slug!==product.slug))
+        }
+        else{
+            setCartItems(cartItems.map((item)=>item.slug===product.slug ?{...exist,quantity: exist.quantity-1}:item));
+        }
+    }
+
     return(
-        <ShopContext.Provider value={{qty,increaseQty,decreaseQty,showCart,setShowCart,cartItems,onAdd}}>
+        <ShopContext.Provider value={{qty,increaseQty,decreaseQty,showCart,setShowCart,cartItems,onAdd,onRemove}}>
         {/*  children automatically detects all the components instead of specifying everyone */}
             {children}
         </ShopContext.Provider>

@@ -5,15 +5,17 @@ import {
   Card,
   CardInfo,
   EmptyStyle,
-  Quantity,
 } from "../styles/CartStyles";
+import {Quantity} from '../styles/ProductDetails'
 import { FaShoppingCart } from "react-icons/fa";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 export default function Cart() {
-  const { cartItems } = useStateContext();
+  const { cartItems,showCart,setShowCart,qty,onAdd,onRemove} = useStateContext();
   return (
-    <CartWrapper>
-      <CartStyle>
+    <CartWrapper onClick={()=>setShowCart(false)}>
+    {/* by giving the onclick property to cartwrapper if you click on any other child class below it will get activated so to avoid it
+    we get the event and used e.stopPropogation which indicates that any child class including this one will not be running its parent function(the one on which it is used)  */}
+      <CartStyle onClick={(e)=>e.stopPropagation()}>
         {cartItems.length < 1 && (
           <EmptyStyle>
             <h1>Oh! seems you havent checked out anything for a while </h1>
@@ -23,7 +25,7 @@ export default function Cart() {
         {cartItems.length >= 1 &&
           cartItems.map((item) => {
             return (
-              <Card>
+              <Card key={item.slug}>
                 <img
                   src={item.image.data.attributes.formats.thumbnail.url}
                   alt={item.title}
@@ -33,11 +35,11 @@ export default function Cart() {
                   <h3>{item.price}</h3>
                   <Quantity>
                     <span>Quantity</span>
-                    <button>
+                    <button onClick={()=>onRemove(item)}>
                       <AiFillMinusCircle></AiFillMinusCircle>
                     </button>
                     <p>{item.quantity}</p>
-                    <button>
+                    <button onClick={()=>onAdd(item,1)}>
                       <AiFillPlusCircle></AiFillPlusCircle>
                     </button>
                   </Quantity>
