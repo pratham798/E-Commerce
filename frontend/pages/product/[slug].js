@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 import { Buy, DetailsStyle,ProductInfo,Quantity} from "../../styles/ProductDetails";
 import {AiFillPlusCircle,AiFillMinusCircle} from "react-icons/ai";
 import { useStateContext } from "../../lib/context";
+
+// const {motion} =require('framer-motion'); //we cant import framer motion like others as it gives error
+
 export default function ProductDetails() {
 
     //Use State
@@ -16,7 +19,7 @@ export default function ProductDetails() {
     //Fetch GraphQL data
     const [results]=useQuery({
         query: GET_PRODUCT_QUERY,
-        variables: {slug: query.slug },
+        variables: {slug: query.slug }, //passed on slug from query created through use router
     });
 
     const {data,fetching,error}=results;

@@ -8,6 +8,8 @@ export const StateContext =({children})=>{
     const [qty,setQty]= useState(1);
     const [showCart, setShowCart]=useState(false);
     const [cartItems, setCartItems] =useState([]);
+    const [totalQuantities,setTotalQuantities]=useState(0);
+    const [totalPrice,setTotalPrice]=useState(0);
     //Increase product Quantity
     const increaseQty = () => {
          setQty((prevQty)=>prevQty+1);
@@ -24,6 +26,13 @@ export const StateContext =({children})=>{
 
     //Add Product To Cart
     const onAdd=(product,quantity)=> {
+
+        //Set Total Price
+        setTotalPrice((prevTotal)=>prevTotal+product.price*quantity);
+
+        //Increase Total Quantities
+        setTotalQuantities((prevTotal)=>prevTotal+quantity);
+        
        //Check if The product is already in the cart
        const exist =cartItems.find(item=>item.slug === product.slug);
        if(exist){
@@ -36,6 +45,13 @@ export const StateContext =({children})=>{
 
     //Remove Products
     const onRemove=(product)=>{
+
+         //Set Total Price
+         setTotalPrice((prevTotal)=>prevTotal-product.price);
+
+         //Decrease Total Quantities
+         setTotalQuantities((prevTotal)=>prevTotal-1);
+
         const exist=cartItems.find((item)=>item.slug==product.slug);
         if(exist.quantity===1){
             setCartItems(cartItems.filter(item=>item.slug!==product.slug))
@@ -46,7 +62,7 @@ export const StateContext =({children})=>{
     }
 
     return(
-        <ShopContext.Provider value={{qty,increaseQty,decreaseQty,showCart,setShowCart,cartItems,onAdd,onRemove}}>
+        <ShopContext.Provider value={{qty,increaseQty,decreaseQty,showCart,setShowCart,cartItems,onAdd,onRemove,totalQuantities,totalPrice}}>
         {/*  children automatically detects all the components instead of specifying everyone */}
             {children}
         </ShopContext.Provider>
