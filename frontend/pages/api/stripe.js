@@ -36,8 +36,7 @@ export default async function handler(req, res) {
           };
         }),
         //Bring user to the success or failed page
-        //session created is passed to success page
-        success_url: `${req.headers.origin}/success?&session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${req.headers.origin}/success`,
         cancel_url: `${req.headers.origin}/canceled`,
       });
       res.status(200).json(session);

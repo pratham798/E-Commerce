@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import { Provider, createClient } from "urql"; //used for fetching adn other operations for graphql
 import Nav from "../Components/Nav";
 import { StateContext } from "../lib/context";
-import { UserProvider } from "@auth0/nextjs-auth0";
 
 const client = createClient({ url: process.env.NEXT_PUBLIC_BACKEND_API });
 //to use urql we need to pass a url for creating a client
@@ -12,14 +11,12 @@ const client = createClient({ url: process.env.NEXT_PUBLIC_BACKEND_API });
 //data is taken from the url
 function MyApp({ Component, pageProps }) {
   return (
-    <UserProvider>
-      <StateContext>
-        <Provider value={client}>
-          <Nav />
-          <Component {...pageProps} />
-        </Provider>
-      </StateContext>
-    </UserProvider>
+    <StateContext>
+      <Provider value={client}>
+        <Nav />
+        <Component {...pageProps} />
+      </Provider>
+    </StateContext>
   );
 }
 export default MyApp;

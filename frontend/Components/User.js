@@ -8,7 +8,6 @@ export default function User() {
   const { user, error, isLoading } = useUser();
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
-  console.log("user", user);
   if (!user || Object.keys(user).length === 0) {
     // Add check for initial value
     return (
