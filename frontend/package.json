@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^2.3.0",
     "@stripe/react-stripe-js": "^1.16.5",
     "@stripe/stripe-js": "^1.48.0",
     "components": "^0.1.0",
@@ -16,6 +17,7 @@
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.0",
     "react-icons": "^4.4.0",
     "stripe": "^11.13.0",
     "styled": "^1.0.0",

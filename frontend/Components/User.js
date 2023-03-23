@@ -1,6 +1,6 @@
 import { FaUserCircle } from "react-icons/fa";
 import { useRouter } from "next/router";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import styled from "styled-components";
 
 export default function User() {

@@ -81,6 +81,7 @@ export const StateContext = ({ children }) => {
         onRemove,
         totalQuantities,
         totalPrice,
+        setQty,
       }}
     >
       {/*  children automatically detects all the components instead of specifying everyone */}
